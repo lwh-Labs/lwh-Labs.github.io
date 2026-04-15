@@ -1,1 +1,116 @@
-<h1>hi</h1>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LWH Labs | 导航</title>
+    <style>
+        :root {
+            --primary-bg: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-main: #f8fafc;
+            --accent-color: #38bdf8;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 背景装饰 */
+        .gradient-sphere {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(50px);
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 90%;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 3px solid var(--accent-color);
+        }
+
+        h1 { font-size: 1.5rem; margin-bottom: 10px; letter-spacing: 1px; }
+        p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin-bottom: 30px; }
+
+        .btn {
+            display: block;
+            background: var(--accent-color);
+            color: #0f172a;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn:hover {
+            background: #7dd3fc;
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+        }
+
+        .secondary-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .secondary-links a {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        .secondary-links a:hover { color: var(--accent-color); }
+    </style>
+</head>
+<body>
+    <div class="gradient-sphere"></div>
+    
+    <div class="card">
+        <img src="https://github.com/lwh-Labs.png" alt="Avatar" class="avatar">
+        <h1>LWH Labs</h1>
+        <p>专注于 AI 工作流、大模型应用与系统开发。<br>在这里探索我的开源项目与技术分享。</p>
+        
+        <a href="https://lwenhao.cn/" class="btn">进入个人博客 →</a>
+
+        <div class="secondary-links">
+            <a href="https://github.com/lwh-Labs">GitHub Project</a>
+            <a href="mailto:your-email@example.com">Contact</a>
+        </div>
+    </div>
+</body>
+</html>

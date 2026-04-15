@@ -3,114 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LWH Labs | 导航</title>
+    <title>LWH Labs | Project Hub</title>
     <style>
         :root {
-            --primary-bg: #0f172a;
-            --card-bg: rgba(255, 255, 255, 0.05);
+            /* 在这里修改颜色以匹配你的博客 (lwenhao.cn) */
+            --primary-color: #3b82f6;       /* 主色：科技蓝 */
+            --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --bg-dark: #0f172a;             /* 背景：深靛蓝 */
+            --card-bg: rgba(30, 41, 59, 0.7); /* 卡片：半透明 */
             --text-main: #f8fafc;
-            --accent-color: #38bdf8;
+            --text-dim: #94a3b8;
         }
+
+        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--primary-bg);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
             color: var(--text-main);
+            line-height: 1.6;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            padding: 40px 20px;
         }
 
-        /* 背景装饰 */
-        .gradient-sphere {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
+        /* 背景流光效果 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 80%);
             z-index: -1;
-            filter: blur(50px);
         }
 
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
+        /* 顶部个人信息 */
+        .header {
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            max-width: 400px;
-            width: 90%;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
+            margin-bottom: 50px;
+            max-width: 600px;
         }
 
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
+            border: 3px solid var(--primary-color);
+            padding: 5px;
             margin-bottom: 20px;
-            border: 3px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
         }
 
-        h1 { font-size: 1.5rem; margin-bottom: 10px; letter-spacing: 1px; }
-        p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin-bottom: 30px; }
+        h1 { font-size: 2.2rem; margin: 10px 0; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: var(--text-dim); margin-bottom: 30px; font-size: 1.1rem; }
 
-        .btn {
-            display: block;
-            background: var(--accent-color);
-            color: #0f172a;
+        /* 博客跳转大按钮 */
+        .blog-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 35px;
+            background: var(--accent-gradient);
+            color: white;
             text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 12px;
+            border-radius: 50px;
             font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
         }
 
-        .btn:hover {
-            background: #7dd3fc;
-            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+        .blog-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px -5px rgba(59, 130, 246, 0.6);
         }
 
-        .secondary-links {
-            margin-top: 20px;
+        /* 项目磁贴网格 */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 60px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
             display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .secondary-links a {
-            color: #94a3b8;
-            font-size: 0.8rem;
+            flex-direction: column;
             text-decoration: none;
+            color: inherit;
         }
 
-        .secondary-links a:hover { color: var(--accent-color); }
+        .project-card:hover {
+            border-color: var(--primary-color);
+            background: rgba(30, 41, 59, 0.9);
+            transform: translateY(-8px);
+        }
+
+        .project-card h3 { margin: 0 0 12px 0; color: var(--primary-color); font-size: 1.3rem; }
+        .project-card p { font-size: 0.95rem; color: var(--text-dim); margin: 0 0 20px 0; flex-grow: 1; }
+        
+        .project-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--primary-color);
+            border-radius: 6px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        footer { margin-top: 80px; color: rgba(148, 163, 184, 0.5); font-size: 0.8rem; }
+
+        /* 移动端优化 */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .project-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-    <div class="gradient-sphere"></div>
-    
-    <div class="card">
+
+    <div class="header">
         <img src="https://github.com/lwh-Labs.png" alt="Avatar" class="avatar">
         <h1>LWH Labs</h1>
-        <p>专注于 AI 工作流、大模型应用与系统开发。<br>在这里探索我的开源项目与技术分享。</p>
+        <p class="subtitle">探索智能体工作流与医疗系统的未来</p>
         
-        <a href="https://lwenhao.cn/" class="btn">进入个人博客 →</a>
-
-        <div class="secondary-links">
-            <a href="https://github.com/lwh-Labs">GitHub Project</a>
-            <a href="mailto:your-email@example.com">Contact</a>
-        </div>
+        <a href="https://lwenhao.cn/" class="blog-cta">阅读我的个人博客 &rarr;</a>
     </div>
+
+    <div class="project-grid">
+        <a href="https://github.com/lwh-Labs/Omni-Agent-Workshop" class="project-card">
+            <h3>Omni-Agent-Workshop</h3>
+            <p>专注于大语言模型智能体（LLM Agents）的多场景工作流搭建与实验平台。</p>
+            <div class="project-tags">
+                <span class="tag">AI</span>
+                <span class="tag">LLM</span>
+                <span class="tag">Agent</span>
+            </div>
+        </a>
+
+        <a href="https://github.com/lwh-Labs" class="project-card">
+            <h3>HIS System</h3>
+            <p>现代医疗信息管理系统，涵盖挂号、处方管理及数字化医疗流程优化。</p>
+            <div class="project-tags">
+                <span class="tag">Healthcare</span>
+                <span class="tag">System</span>
+            </div>
+        </a>
+
+        <a href="https://github.com/lwh-Labs?tab=repositories" class="project-card">
+            <h3>More Projects</h3>
+            <p>点击查看我在 GitHub 上的更多开源贡献与实验项目...</p>
+            <div class="project-tags">
+                <span class="tag">Open Source</span>
+                <span class="tag">Github</span>
+            </div>
+        </a>
+    </div>
+
+    <footer>
+        &copy; 2024 LWH Labs. Powered by GitHub Pages.
+    </footer>
+
 </body>
 </html>
